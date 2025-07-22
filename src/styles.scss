@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import 'quill/dist/quill.snow.css';
+
+.actions {
+  cursor: pointer;
+}
+
+.actions .bi-trash:hover {
+  color: red;
+}
+
+.actions .bi-pencil:hover {
+  color: orange;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+body::after {
+  content: '';
+  display: block;
+  height: 50px;
+}
+
+.badge {
+  cursor: pointer;
+}
+
+.delimiter {
+  margin-left: 5px;
+  margin-right: 5px;
+  display: inline-block;
+  width: 3px;
+  background-color: #6C757D;
+  height: 3px;
+  border-radius: 100%;
+}
+
+.post-logo {
+  height: 300px;
+}
+
+.card-title-link {
+  text-decoration: none;
+}
+
+.custom-input {
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #f4f4f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom button style */
+.custom-btn {
+  background: linear-gradient(90deg, rgba(0, 123, 255, 1) 0%, rgba(0, 153, 255, 1) 100%);
+  color: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease;
+}
+
+.custom-btn:hover {
+  background: linear-gradient(90deg, rgba(0, 102, 255, 1) 0%, rgba(0, 128, 255, 1) 100%);
+  cursor: pointer;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+  .details .row {
+    margin-top: 30px;
+  }
+  .col-md-6, .col-12 {
+    margin-bottom: 20px;
+  }
+  .container {
+    margin-top: 60px;
+  }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+    -webkit-text-fill-color: #333;
+}
+
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 50px white inset;/*your box-shadow*/
+    -webkit-text-fill-color: #333;
+} 

@@ -1,59 +1,86 @@
-# BloggingClient
+# 📝 Angular Blog Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
+This is a blog platform built with Angular, using JWT for authentication, and styled with Bootstrap and Popper.js. The application includes role-based access where users can interact with posts and an admin can manage the entire blog system.
 
-## Development server
+---
 
-To start a local development server, run:
+## 💡 Main Idea
 
-```bash
-ng serve
-```
+The blog project is a public platform where everyone can read posts and like them to stay informed. It's designed for open content access while providing administrative control to the blog owner.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## 🚀 Technologies Used
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Angular
+- Bootstrap
+- Popper.js
+- RxJS
+- JWT (JSON Web Token)
+- ngx packages
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🛠 How to Run
 
-```bash
-ng generate --help
-```
+1. Clone the repository:
+   ```bash
+   git clone <your-repo-url>
 
-## Building
+2. Navigate to the project directory: 
 
-To build the project run:
+   cd blogging-client
 
-```bash
-ng build
-```
+3. Install dependencies:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+   npm install
 
-## Running unit tests
+4. Run the development server:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+   ng serve
 
-```bash
-ng test
-```
+5. Open the app in your browser:
+   
+   http://localhost:4200
 
-## Running end-to-end tests
+## 🔐 Authentication & Roles
 
-For end-to-end (e2e) testing, run:
+- Users must register and then log in.
+- After registration, users are assigned the User role.
+- Users with the Admin role have full access.
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 👤 User Role Capabilities
 
-## Additional Resources
+- View all blog posts
+- Like or unlike posts (likes are saved in the database)
+- Access contact page to reach the admin
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 👨‍💼 Admin Role Capabilities
+
+- Create, edit, and delete blog posts
+- View deleted posts (in a separate page)
+- View activity logs (who opened what)
+- Change user roles (e.g., promote a user to admin)
+- Define and assign custom roles
+- Manage all content
+- View personal profile page
+- Access logout page
+
+---
+
+## ✍️ Features
+
+- Register and log in with JWT
+- Admin dashboard for managing users and posts
+- Like system: users can like/unlike posts (only once per user per post)
+- Deleted posts view
+- Activity tracking page
+- Role management
+- Contact page for user-admin communication
+- Personal information page (profile)
+- Logout functionality
+- Fully responsive design
+
+---

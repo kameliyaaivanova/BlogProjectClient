@@ -1,0 +1,102 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #333; /* Dark text for readability */
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #ffffff; /* White background for the navbar */
+  color: #333333; /* Dark text for visibility */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 1rem 1.5rem; /* Add some padding for spacing */
+}
+
+.navbar .navbar-brand {
+  font-size: 1.6rem; /* Larger font size for brand name */
+  font-weight: bold;
+  color:  #764ba2; /* Blue color for brand name */
+  letter-spacing: 1px;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar .navbar-brand:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  color:  #667eea; /* Darker blue on hover */
+}
+
+.navbar-toggler {
+  border: none; /* Remove border */
+}
+
+/* Navbar Links Styling */
+.navbar-nav .nav-link {
+  color: #555555; /* Soft gray color for the links */
+  font-size: 1.1rem;
+  padding: 12px 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 4px; /* Rounded corners for links */
+}
+
+.navbar-nav .nav-link:hover {
+  background-color:  #764ba2; /* Blue background on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+/* Offcanvas Menu Styling */
+.offcanvas-header {
+  background-color: #f8f9fa; /* Light background for offcanvas header */
+  color: #333333; /* Dark text for contrast */
+  border-bottom: 1px solid #e0e0e0; /* Light border to separate header */
+}
+
+.offcanvas-body {
+  background-color: #ffffff; /* White background for offcanvas body */
+  color: #333333; /* Dark text for readability */
+}
+
+.offcanvas-body .nav-link {
+  color: #555555; /* Soft gray color for the links */
+  font-size: 1.1rem;
+  padding: 12px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.offcanvas-body .nav-link:hover {
+  background-color:  #764ba2; /* Blue background on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+footer {
+  background-color: #f8f9fa; /* Light background for footer */
+  color: #555555; /* Soft gray color for footer text */
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for footer */
+}
+
+footer {
+  text-align: center;
+  font-weight: 400;
+  margin-top: 40px;
+  padding: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem; /* Reduced padding for mobile */
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1rem; /* Slightly smaller font size for mobile */
+    padding: 10px 12px; /* Adjust padding for mobile */
+  }
+}

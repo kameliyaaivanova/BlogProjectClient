@@ -1,0 +1,44 @@
+<nav class="navbar bg-body-tertiary shadow position-relative">
+  <div class="container">
+    <a class="navbar-brand" href="/">Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end p-4" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body fs-5">
+        <ul class="navbar-nav justify-content-end flex-grow-1">
+          <li class="nav-item"><a class="nav-link" routerLink="/" aria-current="page" data-bs-dismiss="offcanvas"><i class="bi bi-house pe-2"></i> Home</a></li>
+          @if (hasCategoriesSectionAccess) {
+            <li class="nav-item"><a class="nav-link" routerLink="/categories" data-bs-dismiss="offcanvas"><i class="bi bi-tags pe-2"></i> Categories</a></li>
+          }
+          @if (hasRolesSectionAccess) {
+            <li class="nav-item"><a class="nav-link" routerLink="/roles" data-bs-dismiss="offcanvas"><i class="bi bi-card-list pe-2"></i> Roles</a></li>
+          }
+          @if (hasUsersSectionAccess) {
+            <li class="nav-item"><a class="nav-link" routerLink="/users" data-bs-dismiss="offcanvas"><i class="bi bi-people pe-2"></i> Users</a></li>
+          }
+          @if (hasPostsSectionAccess) {
+            <li class="nav-item"><a class="nav-link" routerLink="/posts" data-bs-dismiss="offcanvas"><i class="bi bi-newspaper pe-2"></i> Posts</a></li>
+          }
+          <li class="nav-item"><a class="nav-link" routerLink="/about" data-bs-dismiss="offcanvas"><i class="bi bi-file-earmark-person pe-2"></i> About</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="/contact" data-bs-dismiss="offcanvas"><i class="bi bi-telephone-forward pe-2"></i> Contact</a></li>
+          @if (hasStatisticsAccess) {
+            <li class="nav-item"><a class="nav-link" routerLink="/activity" data-bs-dismiss="offcanvas"><i class="bi bi-activity pe-2"></i> Activity</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/deleted-files" data-bs-dismiss="offcanvas"><i class="bi bi-archive pe-2"></i> Deleted Files</a></li>
+          }
+          @if (isAuthenticated) {
+            <li class="nav-item"><a class="nav-link" (click)="logout()" style="cursor: pointer;" data-bs-dismiss="offcanvas"><i class="bi bi-box-arrow-left pe-2"></i> Logout</a></li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<router-outlet />
+<footer class="bg-body-tertiary shadow-lg">
+  <p>Copyright © Kameliya Ivanova</p>
+</footer>

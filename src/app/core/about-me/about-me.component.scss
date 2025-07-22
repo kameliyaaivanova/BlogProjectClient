@@ -1,0 +1,22 @@
+.about-section {
+  background: #f9f9f9;
+}
+
+.about-info {
+  background-color: #ffffff;
+  border-left: 5px solid #764ba2;
+}
+
+.about-image-wrapper img {
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.about-image-wrapper:hover img {
+  transform: scale(1.02);
+}
+
+.about-image-wrapper {
+  max-width: 100%;
+  max-height: 500px;
+}

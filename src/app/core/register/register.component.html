@@ -1,0 +1,65 @@
+<div class="register-page">
+  <div class="register-card">
+    <h3 class="register-title">Create Account</h3>
+    <p class="register-subtitle">It’s quick and easy</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <div class="input-group">
+        <input type="text" placeholder=" " formControlName="username" />
+        <label>Username</label>
+        @if (isPropertyInvalid(username)) {
+          <div class="text-danger">
+            @if (username?.hasError('minlength')) {
+              Must have at least 3 characters
+            } @else if (username?.hasError('required')) {
+              Cannot be empty
+            }
+          </div>
+        }
+      </div>
+
+      <div class="input-group">
+        <input type="email" placeholder=" " formControlName="email" />
+        <label>Email address</label>
+        @if (isPropertyInvalid(email)) {
+          <div class="text-danger">
+            @if (email?.hasError('email')) {
+              Not a correct form
+            } @else if (email?.hasError('required')) {
+              Cannot be empty
+            }
+          </div>
+        }
+      </div>
+
+      <div class="input-group">
+        <input type="password" placeholder=" " formControlName="password" />
+        <label>Password</label>
+        @if (isPropertyInvalid(password)) {
+          <div class="text-danger">
+            @if (password?.hasError('required')) {
+              Cannot be empty
+            } @else if (password?.hasError('pattern')) {
+              Must have at least 8 symbols including uppercase, lowercase character and a number
+            }
+          </div>
+        }
+      </div>
+
+      <div class="input-group">
+        <input type="password" placeholder=" " formControlName="repeatPassword" />
+        <label>Repeat Password</label>
+        @if (repeatPassword?.value !== password?.value && (repeatPassword?.dirty || repeatPassword?.touched)) {
+          <div class="text-danger">Passwords Mismatch</div>
+        }
+      </div>
+
+      <button type="submit" class="btn-submit mb-3">Register</button>
+
+      <div class="login-link">
+        Already have an account?
+        <a routerLink="/login">Login</a>
+      </div>
+    </form>
+  </div>
+</div>

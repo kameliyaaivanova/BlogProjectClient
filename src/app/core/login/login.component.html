@@ -1,0 +1,39 @@
+
+ <div class="login-page">
+  <div class="login-card">
+    <h2 class="login-title">Welcome Back</h2>
+    <p class="login-subtitle">Please login to your account</p>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+      <div class="input-group">
+        <input type="text" formControlName="username" required />
+        <label>Username</label>
+        @if (isPropertyInvalid(username)) {
+          <div class="error mt-1">
+            @if (username?.hasError('required')) {
+              Cannot be empty
+            }
+          </div>
+        }
+      </div>
+
+      <div class="input-group">
+        <input type="password" formControlName="password" required />
+        <label>Password</label>
+        @if (isPropertyInvalid(password)) {
+          <div class="error mt-1">
+            @if (password?.hasError('required')) {
+              Cannot be empty
+            }
+          </div>
+        }
+      </div>
+
+      <button type="submit" class="btn-submit">Login</button>
+
+      <div class="register-link">
+        Don't have an account? <a routerLink="/register">Register</a>
+      </div>
+    </form>
+  </div>
+</div>
+

@@ -1,0 +1,89 @@
+<div class="user-form-page">
+  <div class="user-form-card">
+    <h3 class="user-form-title text-center mb-1">
+      @if (user.id) {
+        Update
+      } @else {
+        Add
+      }
+      User
+    </h3>
+    <p class="user-form-subtitle text-center mb-4">Manage user details</p>
+
+    <form (submit)="onSubmit()" [formGroup]="form">
+      @if (user.id) {
+        <div class="form-floating mb-4">
+          <input type="text" class="form-control" [value]="user.id" disabled placeholder="ID" />
+          <label>ID</label>
+        </div>
+      }
+
+      <div class="form-floating mb-4">
+        <input type="text" class="form-control" formControlName="username" placeholder="Username" />
+        <label>Username</label>
+        @if (username?.invalid && (username?.dirty || username?.touched || submitted)) {
+          <div class="text-danger mt-1">
+            @if (username?.hasError('minlength')) {
+              Must have at least 3 characters
+            } @else if (username?.hasError('required')) {
+              Cannot be empty
+            } @else if (username?.hasError('maxlength')) {
+              Cannot be more than 30 characters
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-floating mb-4">
+        <input type="email" class="form-control" formControlName="email" placeholder="Email" />
+        <label>Email</label>
+        @if (email?.invalid && (email?.dirty || email?.touched || submitted)) {
+          <div class="text-danger mt-1">
+            @if (email?.hasError('email')) {
+              Invalid email
+            } @else if (email?.hasError('required')) {
+              Cannot be empty
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-floating mb-4">
+        <input type="password" class="form-control" formControlName="password" placeholder="Password" />
+        <label>Password</label>
+        @if (password?.invalid && (password?.dirty || password?.touched || submitted)) {
+          <div class="text-danger mt-1">
+            @if (password?.hasError('required')) {
+              Cannot be empty
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-floating mb-4">
+        <select class="form-select" formControlName="role">
+          <option value="" disabled selected hidden>Select Role</option>
+          @for (role of roles; track $index) {
+            <option [value]="role.id">{{ role.name }}</option>
+          }
+        </select>
+        <label>Role</label>
+        @if (role?.invalid && (role?.dirty || role?.touched || submitted)) {
+          <div class="text-danger mt-1">
+            @if (role?.hasError('min')) {
+              Cannot be empty
+            }
+          </div>
+        }
+      </div>
+
+      <button type="submit" class="btn-submit w-100">
+        @if (user.id) {
+          Update
+        } @else {
+          Add
+        }
+      </button>
+    </form>
+  </div>
+</div>

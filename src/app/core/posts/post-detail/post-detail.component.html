@@ -1,0 +1,108 @@
+<div class="container bg-body-tertiary shadow" style="margin-top: 80px; margin-bottom: 80px;">
+  <h4 class="text-center pt-4 mb-4">
+    @if (post.id) {
+      Update
+    } @else {
+      Add
+    }
+    Post
+  </h4>
+  <form (submit)="onSubmit()" [formGroup]="form">
+    <div class="row p-4">
+      <div class="col-12 col-lg-4">
+        @if (post.id) {
+          <div class="form-floating mb-4">
+            <input type="text" class="form-control"[value]="post.id" disabled placeholder="id">
+            <label>ID</label>
+          </div>
+        }
+        <div class="form-floating mb-4">
+          <input type="text" class="form-control" formControlName="title" [value]="post.title" placeholder="title">
+          <label>Title</label>
+          @if (title?.invalid && submitted) {
+            <div class="alert alert-danger">
+              @if (title?.hasError('minlength')) {
+                Must have at least 3 characters
+              } @else if (title?.hasError('required')) {
+                Cannot be empty
+              } @else if (title?.hasError('maxlength')) {
+                Cannot be more than 36 characters
+              }
+            </div>
+          }
+        </div>
+        <div class="form-floating mb-4">
+          <textarea class="form-control" style="height: 130px;" formControlName="description" [value]="post.description" placeholder="description"></textarea>
+          <label>Description</label>
+          @if (description?.invalid && submitted) {
+            <div class="alert alert-danger">
+              @if (description?.hasError('minlength')) {
+                Must have at least 3 characters
+              } @else if (description?.hasError('required')) {
+                Cannot be empty
+              } @else if (description?.hasError('maxlength')) {
+                Cannot be more than 100 characters
+              }
+            </div>
+          }
+        </div>
+        <div class="mb-4">
+          <label for="file" class="form-label">Logo</label>
+          <input accept="image/*" (change)="selectFile($event)" class="form-control" type="file">
+          @if (!post.logo && !selectedFile && submitted) {
+            <div class="alert alert-danger">
+                Cannot be empty
+            </div>
+          }
+        </div>
+        <div class="mb-4">
+          <img [src]="previewImage" class="w-100" style="max-height: 400px" />
+        </div>
+        <div class="mb-4 mt-3">
+          <small class="fw-semibold">Categories:</small>
+          <br />
+          @for (cat of allCategories; track $index) {
+            <span class="badge rounded-pill text-bg-secondary me-2 mb-2" (click)="choose(cat)"><small>{{ cat.title }}</small></span>
+          }
+        </div>
+        <div class="mb-4">
+          <small class="fw-semibold">Selected:</small>
+          <br />
+          @for (category of selectedCategories; track $index) {
+            <span class="badge rounded-pill text-bg-secondary me-2 mb-2" (click)="removeSelected(category)"><small>{{ category.title }}</small></span>
+          }
+          @if (selectedCategories.length == 0) {
+            <div class="alert alert-danger">
+              <i class="bi bi-exclamation-triangle"></i> At least 1 category has to be selected
+            </div>
+          } @else if (selectedCategories.length > 3) {
+            <div class="alert alert-danger">
+              <i class="bi bi-exclamation-triangle"></i> Maximum of 3 categories can be selected
+            </div>
+          }
+        </div>
+      </div>
+      <div class="col-12 col-lg-8 mb-4">
+        <quill-editor [modules]="quillModules" formControlName="content" style="height: 620px; width:100%;"></quill-editor>
+        @if (content?.invalid && submitted) {
+          <div class="alert alert-danger">
+            @if (content?.hasError('required')) {
+              Cannot be empty
+            } @else if (content?.hasError('minlength')) {
+              Must have at least 5 characters
+            }
+          </div>
+        }
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-outline-secondary px-5">
+          @if (post.id) {
+            Update
+          } @else {
+            Add
+          }
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

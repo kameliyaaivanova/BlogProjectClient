@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="header d-flex justify-content-between my-4">
+    <h3 class="align-self-end">Activity</h3>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Path</th>
+        <th scope="col">User ID</th>
+        <th scope="col">Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (activity of activities; track $index) {
+        <tr>
+          <th scope="row">{{ activity.id }}</th>
+          <td>{{ activity.path }}</td>
+          <td>{{ activity.userId ? activity.userId : 'None' }}</td>
+          <td>{{ activity.createdAt*1000 | date:'medium' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <app-page-nav [page]="page" (pageChangedEvent)="getPage($event)"></app-page-nav>
+</div>

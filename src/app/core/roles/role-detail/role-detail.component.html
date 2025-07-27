@@ -1,0 +1,62 @@
+<div class="wrapper w-100 bg-body-tertiary shadow">
+  <h4 class="text-center mb-4">
+    @if (role.id) {
+      Update
+    } @else {
+      Add
+    }
+    Role
+  </h4>
+  <form (submit)="onSubmit()" [formGroup]="form">
+    @if (role.id) {
+      <div class="form-floating mb-4">
+        <input type="text" class="form-control"[value]="role.id" disabled placeholder="id">
+        <label>ID</label>
+      </div>
+    }
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" formControlName="name" placeholder="name">
+      <label>Title</label>
+      @if (name?.invalid && (name?.dirty || name?.touched || submitted)) {
+        <div class="alert alert-danger">
+          @if (name?.hasError('minlength')) {
+            Must have at least 3 characters
+          } @else if (name?.hasError('required')) {
+            Cannot be empty
+          } @else if (name?.hasError('maxlength')) {
+            Cannot be more than 30 characters
+          }
+        </div>
+      }
+    </div>
+    <h5 class="text-center mt-4">Permissions</h5>
+    <div class="mb-4">
+      <small class="fw-semibold">Available:</small>
+      <br />
+      @for (permission of permissions; track $index) {
+        <span class="badge rounded-pill text-bg-secondary me-2 mb-2" (click)="choose(permission)"><small>{{ permission.description }}</small></span>
+      }
+    </div>
+    <div class="mb-4">
+      <small class="fw-semibold">Selected:</small>
+      <br />
+      @for (permission of selectedPermissions; track $index) {
+        <span class="badge rounded-pill text-bg-secondary me-2 mb-2" (click)="removeSelected(permission)"><small>{{ permission.description }}</small></span>
+      }
+      @if (selectedPermissions.length == 0) {
+        <div class="alert alert-danger">
+          <i class="bi bi-exclamation-triangle"></i> At least 1 permission has to be selected
+        </div>
+      }
+    </div>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-outline-secondary">
+        @if (role.id) {
+          Update
+        } @else {
+          Add
+        }
+      </button>
+    </div>
+  </form>
+</div>

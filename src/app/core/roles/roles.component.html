@@ -1,0 +1,68 @@
+
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🛡️ Roles</h2>
+    @if (hasCreatePermission) {
+      <button type="button" class="btn btn-primary shadow-sm" routerLink="/roles/add">
+        <i class="bi bi-plus-circle me-1"></i> Add Role
+      </button>
+    }
+  </div>
+
+  <div class="table-responsive shadow-sm rounded">
+    <table class="table table-hover align-middle bg-white">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Created At</th>
+          <th>Permissions</th>
+          @if (hasDeletePermission || hasUpdatePermission) {
+            <th>Actions</th>
+          }
+        </tr>
+      </thead>
+      <tbody>
+        @for (role of roles; track $index) {
+          <tr>
+            <th scope="row">{{ role.id }}</th>
+            <td class="fw-medium">{{ role.name }}</td>
+            <td>
+              <span class="text-muted small">
+                {{ role.createdAt * 1000 | date:'medium' }}
+              </span>
+            </td>
+            <td>
+              @for (permission of role.permissions; track $index) {
+                <span class="badge rounded-pill text-bg-secondary me-1 mb-1">
+                  {{ permission.description }}
+                </span>
+              }
+            </td>
+            @if (hasDeletePermission || hasUpdatePermission) {
+              <td>
+                <div class="d-flex gap-2 align-items-center">
+                  @if (role.name != 'Admin' && role.name != 'User') {
+                    @if (hasUpdatePermission) {
+                      <button class="btn btn-sm btn-outline-secondary" routerLink="/roles/{{role.id}}">
+                        <i class="bi bi-pencil"></i>
+                      </button>
+                    }
+                    @if (hasDeletePermission) {
+                      <button class="btn btn-sm btn-outline-danger" (click)="deleteRole(role.id!)">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    }
+                  }
+                </div>
+              </td>
+            }
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="my-5" />
+  <app-page-nav [page]="page" (pageChangedEvent)="getPage($event)"></app-page-nav>
+</div>

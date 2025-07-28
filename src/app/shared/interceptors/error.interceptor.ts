@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   let liveRefreshToken = false;
-  const refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  const refreshTokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
   const storageService = inject(StorageService)
   const userService = inject(UserService)
   const jwtService = inject(JwtService)

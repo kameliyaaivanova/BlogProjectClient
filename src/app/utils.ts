@@ -16,7 +16,7 @@ export class Utils {
     }
   }
 
-  public static attachToken(request: HttpRequest<any>, jwt: String): HttpRequest<any> {
+  public static attachToken<T>(request: HttpRequest<T>, jwt: string): HttpRequest<T> {
     if (!jwt) {
       return request;
     }

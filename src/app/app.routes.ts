@@ -21,6 +21,7 @@ import { postGuard } from './shared/guards/post.guard';
 import { roleGuard } from './shared/guards/role.guard';
 import { statsGuard } from './shared/guards/stats.guard';
 import { userGuard } from './shared/guards/user.guard';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -41,4 +42,5 @@ export const routes: Routes = [
   { path: 'posts/:id', component: PostDetailComponent, canActivate: [AuthGuard, postGuard] },
   { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard, statsGuard] },
   { path: 'deleted-files', component: DeletedFilesComponent, canActivate: [AuthGuard, statsGuard] },
+  { path: '**', component: NotFoundComponent }
 ];
